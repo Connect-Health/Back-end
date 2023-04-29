@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @RestController
 public class Controller {
 
@@ -29,7 +31,7 @@ public class Controller {
                     "https://avatars.githubusercontent.com/u/125279606?s=96&v=4"));
 
     private List<Profissional> profissionais = List.of(
-            new Profissional("João", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1", "joao@gmail",
+            new Profissional(1, "João", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1", "joao@gmail",
                     "https://avatars.githubusercontent.com/u/125279572?s=96&v=4",
                     List.of("Familia", "Depressao", "Ansiedade", "Constipação", "Diarréia", "Disbiose", "Dislipidemia",
                             "Enxaqueca",
@@ -38,7 +40,7 @@ public class Controller {
                     "https://conhecimento.sti.ufpb.br/uploads/images/gallery/2022-08/scaled-1680-/1Mnt48ERQnwewxg2-image-1661441161358.png",
                     "1h", "R$ 100,00",
                     "Descrição", "Nutrição", "5"),
-            new Profissional("Maria", "Souza", "11988888888", "1990-05-21", "22222222222", "Rua 2", "maria@gmail",
+            new Profissional(2, "Maria", "Souza", "11988888888", "1990-05-21", "22222222222", "Rua 2", "maria@gmail",
                     "https://avatars.githubusercontent.com/u/125279606?s=96&v=4",
                     List.of("Depressao", "Estresse", "Autoestima",
                             "Ansiedade", "Relacionamento", "Familia", "Luto", "Sexualidade", "Transtorno Alimentar",
@@ -46,7 +48,7 @@ public class Controller {
                     "https://conhecimento.sti.ufpb.br/uploads/images/gallery/2022-08/scaled-1680-/1Mnt48ERQnwewxg2-image-1661441161358.png",
                     "45min", "R$ 80,00",
                     "Descrição", "Psicologia", "4.9"),
-            new Profissional("Pedro", "Rodrigues", "11977777777", "1985-12-10", "33333333333", "Rua 3", "pedro@gmail",
+            new Profissional(3, "Pedro", "Rodrigues", "11977777777", "1985-12-10", "33333333333", "Rua 3", "pedro@gmail",
                     "https://avatars.githubusercontent.com/u/99509845?s=96&v=4",
                     List.of("Obesidade", "Diabetes", "Hipertensão",
                             "Doença Celíaca", "Doença de Crohn", "Intolerância à Lactose", "Gastrite", "Refluxo",
@@ -55,7 +57,7 @@ public class Controller {
                     "https://conhecimento.sti.ufpb.br/uploads/images/gallery/2022-08/scaled-1680-/1Mnt48ERQnwewxg2-image-1661441161358.png",
                     "1h30min", "R$ 120,00",
                     "Descrição", "Nutrição", "4.5"),
-            new Profissional("Camila", "Almeida", "11999999999", "1990-03-10", "22222222222", "Rua 2",
+            new Profissional(4, "Camila", "Almeida", "11999999999", "1990-03-10", "22222222222", "Rua 2",
                     "camila@gmail.com",
                     "https://avatars.githubusercontent.com/u/125279740?s=96&v=4",
                     List.of("Depressão", "Ansiedade", "Estresse", "Fobias", "Transtornos Alimentares", "Autoestima",
@@ -64,7 +66,7 @@ public class Controller {
                     "1h", "R$ 120,00",
                     "Descrição", "Psicologia", "4"),
 
-            new Profissional("Gabriela", "Santos", "11999999999", "1995-05-20", "33333333333", "Rua 3",
+            new Profissional(5, "Gabriela", "Santos", "11999999999", "1995-05-20", "33333333333", "Rua 3",
                     "gabriela@gmail.com",
                     "https://avatars.githubusercontent.com/u/125279977?s=96&v=4",
                     List.of("Emagrecimento", "Ganho de Massa Muscular", "Reeducação Alimentar", "Doenças Metabólicas",
@@ -73,7 +75,7 @@ public class Controller {
                     "1h30min", "R$ 150,00",
                     "Descrição", "Nutrição", "5"),
 
-            new Profissional("Roberto", "Oliveira", "11999999999", "1985-12-01", "44444444444", "Rua 4",
+            new Profissional(6, "Roberto", "Oliveira", "11999999999", "1985-12-01", "44444444444", "Rua 4",
                     "roberto@gmail.com",
                     "https://avatars.githubusercontent.com/u/125280164?s=96&v=4",
                     List.of("Depressão", "Ansiedade", "Burnout", "Transtornos de Personalidade",
@@ -82,7 +84,43 @@ public class Controller {
                     "50min", "R$ 200,00",
                     "Descrição", "Psicologia", "4"),
 
-            new Profissional("Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
+            new Profissional(7, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
+                    "mariana@gmail.com",
+                    "https://avatars.githubusercontent.com/u/125280336?s=96&v=4",
+                    List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
+                            "Alimentação Saudável", "Nutrição Esportiva"),
+                    "https://www.linkedin.com/in/marianalima/",
+                    "1h", "R$ 130,00",
+                    "Descrição", "Nutrição", "5"),
+
+                new Profissional(8, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
+                    "mariana@gmail.com",
+                    "https://avatars.githubusercontent.com/u/125280336?s=96&v=4",
+                    List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
+                            "Alimentação Saudável", "Nutrição Esportiva"),
+                    "https://www.linkedin.com/in/marianalima/",
+                    "1h", "R$ 130,00",
+                    "Descrição", "Nutrição", "5"),
+
+                    new Profissional(9, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
+                    "mariana@gmail.com",
+                    "https://avatars.githubusercontent.com/u/125280336?s=96&v=4",
+                    List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
+                            "Alimentação Saudável", "Nutrição Esportiva"),
+                    "https://www.linkedin.com/in/marianalima/",
+                    "1h", "R$ 130,00",
+                    "Descrição", "Nutrição", "5"),
+
+                    new Profissional(10, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
+                    "mariana@gmail.com",
+                    "https://avatars.githubusercontent.com/u/125280336?s=96&v=4",
+                    List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
+                            "Alimentação Saudável", "Nutrição Esportiva"),
+                    "https://www.linkedin.com/in/marianalima/",
+                    "1h", "R$ 130,00",
+                    "Descrição", "Nutrição", "5"),
+
+                    new Profissional(11, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
                     "mariana@gmail.com",
                     "https://avatars.githubusercontent.com/u/125280336?s=96&v=4",
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
@@ -90,9 +128,11 @@ public class Controller {
                     "https://www.linkedin.com/in/marianalima/",
                     "1h", "R$ 130,00",
                     "Descrição", "Nutrição", "5"));
+                    
 
     @GetMapping(value = "/pacientes")
-    public List<Paciente> pacientes() {
+    public List<Paciente> pacientes(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return pacientes;
     }
 
@@ -102,7 +142,8 @@ public class Controller {
     }
 
     @GetMapping(value = "/profissionais")
-    public List<Profissional> profissionais() {
+    public List<Profissional> profissionais(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
         return profissionais;
     }
 

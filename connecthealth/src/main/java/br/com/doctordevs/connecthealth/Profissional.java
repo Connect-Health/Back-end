@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Profissional {
 
+    private Number id;
     private String nome;
     private String sobrenome;
     private String telefone;
@@ -20,9 +21,10 @@ public class Profissional {
     private String areaAtuacao;
     private String avaliacao;
 
-    public Profissional(String nome, String sobrenome, String telefone, String dataNascimento, String cpf,
+    public Profissional(Number id, String nome, String sobrenome, String telefone, String dataNascimento, String cpf,
             String endereco, String email, String avatar, List especialidade, String certificado, String duracao,
             String preco, String descricao, String areaAtuacao, String avaliacao) {
+        this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
         this.telefone = telefone;
@@ -38,6 +40,14 @@ public class Profissional {
         this.descricao = descricao;
         this.areaAtuacao = areaAtuacao;
         this.avaliacao = avaliacao;
+    }
+
+    public Number getId() {
+        return id;
+    }
+
+    public void setId(Number id) {
+        this.id = id;
     }
 
     public String getNome() {
