@@ -127,7 +127,7 @@ public class Controller {
                     "https://avatars.githubusercontent.com/u/125280336?s=96&v=4",
                     List.of("Gestantes", "Puérperas", "Crianças"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "1h", "R$ 130,00",
+                    "60", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                     new Profissional(11, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -136,7 +136,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "1h", "R$ 130,00",
+                    "60", "R$ 130,00",
                     "Descrição", "Nutrição", "5"));
                     
 
