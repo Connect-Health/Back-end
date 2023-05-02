@@ -1,8 +1,10 @@
 package br.com.doctordevs.connecthealth;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.servlet.http.HttpServletResponse;
@@ -10,25 +12,33 @@ import jakarta.servlet.http.HttpServletResponse;
 @RestController
 public class Controller {
 
-    private List<Paciente> pacientes = List.of(
-            new Paciente("João", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1", "joao@gmail",
-                    "https://avatars.githubusercontent.com/u/125038606?s=96&v=4"),
-            new Paciente("Gabriela", "Mendes", "1199999999", "1999-01-01", "11111111111", "Rua 1", "joao@gmail",
-                    "https://avatars.githubusercontent.com/u/92945219?s=96&v=4"),
-            new Paciente("Guilherme", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1", "joao@gmail",
-                    "https://avatars.githubusercontent.com/u/125367739?s=64&v=4"),
-            new Paciente("Pedro", "Carvalho", "11933333333", "1993-03-15", "77777777777", "Rua 7", "pedro@gmail",
-                    "https://avatars.githubusercontent.com/u/125279606?s=96&v=4"),
-            new Paciente("Rafael", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1", "rafael@gmail",
-                    "https://avatars.githubusercontent.com/u/104914975?s=96&v=4"),
-            new Paciente("Julia", "Souza", "11988888888", "1995-12-10", "22222222222", "Rua 2", "julia@gmail",
-                    "https://avatars.githubusercontent.com/u/125279572?s=96&v=4"),
-            new Paciente("Gabriel", "Almeida", "11977777777", "1989-06-18", "33333333333", "Rua 3", "gabriel@gmail",
-                    "https://avatars.githubusercontent.com/u/99509845?s=96&v=4"),
-            new Paciente("Isabela", "Fernandes", "11922222222", "1998-11-29", "88888888888", "Rua 8", "isabela@gmail",
-                    "https://avatars.githubusercontent.com/u/104914975?s=96&v=4"),
-            new Paciente("Renato", "Santos", "11911111111", "1980-04-05", "99999999999", "Rua 9", "renato@gmail",
-                    "https://avatars.githubusercontent.com/u/125279606?s=96&v=4"));
+        private List<Paciente> pacientes = List.of(
+                        new Paciente("João", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1", "joao@gmail",
+                                        "https://avatars.githubusercontent.com/u/125038606?s=96&v=4"),
+                        new Paciente("Gabriela", "Mendes", "1199999999", "1999-01-01", "11111111111", "Rua 1",
+                                        "joao@gmail",
+                                        "https://avatars.githubusercontent.com/u/92945219?s=96&v=4"),
+                        new Paciente("Guilherme", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1",
+                                        "joao@gmail",
+                                        "https://avatars.githubusercontent.com/u/125367739?s=64&v=4"),
+                        new Paciente("Pedro", "Carvalho", "11933333333", "1993-03-15", "77777777777", "Rua 7",
+                                        "pedro@gmail",
+                                        "https://avatars.githubusercontent.com/u/125279606?s=96&v=4"),
+                        new Paciente("Rafael", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1",
+                                        "rafael@gmail",
+                                        "https://avatars.githubusercontent.com/u/104914975?s=96&v=4"),
+                        new Paciente("Julia", "Souza", "11988888888", "1995-12-10", "22222222222", "Rua 2",
+                                        "julia@gmail",
+                                        "https://avatars.githubusercontent.com/u/125279572?s=96&v=4"),
+                        new Paciente("Gabriel", "Almeida", "11977777777", "1989-06-18", "33333333333", "Rua 3",
+                                        "gabriel@gmail",
+                                        "https://avatars.githubusercontent.com/u/99509845?s=96&v=4"),
+                        new Paciente("Isabela", "Fernandes", "11922222222", "1998-11-29", "88888888888", "Rua 8",
+                                        "isabela@gmail",
+                                        "https://avatars.githubusercontent.com/u/104914975?s=96&v=4"),
+                        new Paciente("Renato", "Santos", "11911111111", "1980-04-05", "99999999999", "Rua 9",
+                                        "renato@gmail",
+                                        "https://avatars.githubusercontent.com/u/125279606?s=96&v=4"));
 
     private List<Profissional> profissionais = List.of(
             new Profissional(1, "João", "Silva", "11999999999", "1999-01-01", "11111111111", "Rua 1", "joao@gmail",
@@ -72,17 +82,18 @@ public class Controller {
                     List.of("Emagrecimento", "Ganho de Massa Muscular", "Reeducação Alimentar", "Doenças Metabólicas",
                             "Intolerâncias e Alergias Alimentares", "Dificuldades com a Alimentação"),
                     "https://www.linkedin.com/in/gabriela-santos-23198310b/",
-                    "45min", "R$ 150,00",
+                    "1h30min", "R$ 150,00",
                     "Descrição", "Nutrição", "5"),
 
-            new Profissional(6, "Roberto", "Oliveira", "11999999999", "1985-12-01", "44444444444", "Rua 4",
-                    "roberto@gmail.com",
-                    "https://avatars.githubusercontent.com/u/125280164?s=96&v=4",
-                    List.of("Depressão", "Ansiedade", "Burnout", "Transtornos de Personalidade",
-                            "Estresse Pós-Traumático", "Insônia", "Transtornos Alimentares"),
-                    "https://www.linkedin.com/in/roberto-oliveira-99a46626/",
-                    "50min", "R$ 200,00",
-                    "Descrição", "Psicologia", "4"),
+                        new Profissional(6, "Roberto", "Oliveira", "11999999999", "1985-12-01", "44444444444", "Rua 4",
+                                        "roberto@gmail.com",
+                                        "https://avatars.githubusercontent.com/u/125280164?s=96&v=4",
+                                        List.of("Depressão", "Ansiedade", "Burnout", "Transtornos de Personalidade",
+                                                        "Estresse Pós-Traumático", "Insônia",
+                                                        "Transtornos Alimentares"),
+                                        "https://www.linkedin.com/in/roberto-oliveira-99a46626/",
+                                        "50min", "R$ 200,00",
+                                        "Descrição", "Psicologia", "4"),
 
             new Profissional(7, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
                     "mariana@gmail.com",
@@ -90,7 +101,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "60min", "R$ 130,00",
+                    "1h", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                 new Profissional(8, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -99,7 +110,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "60min", "R$ 130,00",
+                    "1h", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                     new Profissional(9, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -108,7 +119,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "60min", "R$ 130,00",
+                    "1h", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                     new Profissional(10, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -116,7 +127,7 @@ public class Controller {
                     "https://avatars.githubusercontent.com/u/125280336?s=96&v=4",
                     List.of("Gestantes", "Puérperas", "Crianças"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "60min", "R$ 130,00",
+                    "1h", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                     new Profissional(11, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -125,7 +136,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "60min", "R$ 130,00",
+                    "1h", "R$ 130,00",
                     "Descrição", "Nutrição", "5"));
                     
 
@@ -135,19 +146,27 @@ public class Controller {
         return pacientes;
     }
 
-    @GetMapping(value = "/pacientes/{id}")
-    public Paciente paciente() {
-        return pacientes.get(0);
-    }
+        @GetMapping(value = "/nutricionistas")
+        public List<Profissional> nutricionistas(HttpServletResponse response) {
+                response.setHeader("Access-Control-Allow-Origin", "*");
 
-    @GetMapping(value = "/profissionais")
-    public List<Profissional> profissionais(HttpServletResponse response) {
-        response.setHeader("Access-Control-Allow-Origin", "*");
-        return profissionais;
-    }
+                return profissionais.stream()
+                                .filter(p -> p.getAreaAtuacao().equals("Nutrição"))
+                                .collect(Collectors.toList());
+        }
 
-    @GetMapping(value = "/profissionais/{id}")
-    public Profissional profissional() {
-        return profissionais.get(0);
-    }
+        @GetMapping(value = "/psicologos")
+        public List<Profissional> psicologos(HttpServletResponse response) {
+                response.setHeader("Access-Control-Allow-Origin", "*");
+
+                return profissionais.stream()
+                                .filter(p -> p.getAreaAtuacao().equals("Psicologia"))
+                                .collect(Collectors.toList());
+        }
+
+        @GetMapping(value = "/profissional/{id}")
+        public Profissional profissional(HttpServletResponse response, @PathVariable("id") int id) {
+                response.setHeader("Access-Control-Allow-Origin", "*");
+                return profissionais.get(id - 1);
+        }
 }
