@@ -38,7 +38,7 @@ public class Controller {
                             "Fibromialgia", "Insônia", "Menopausa", "TPM", "Infertilidade", "Gestação", "Lactação",
                             "Crianças", "Adolescentes"),
                     "https://conhecimento.sti.ufpb.br/uploads/images/gallery/2022-08/scaled-1680-/1Mnt48ERQnwewxg2-image-1661441161358.png",
-                    "1h", "R$ 100,00",
+                    "60min", "R$ 100,00",
                     "Descrição", "Nutrição", "5"),
             new Profissional(2, "Maria", "Souza", "11988888888", "1990-05-21", "22222222222", "Rua 2", "maria@gmail",
                     "https://avatars.githubusercontent.com/u/125279606?s=96&v=4",
@@ -55,7 +55,7 @@ public class Controller {
                             "Síndrome do Intestino Irritável", "Anemia", "Colesterol Alto", "Gota", "Osteoporose",
                             "Câncer", "Alergias"),
                     "https://conhecimento.sti.ufpb.br/uploads/images/gallery/2022-08/scaled-1680-/1Mnt48ERQnwewxg2-image-1661441161358.png",
-                    "1h30min", "R$ 120,00",
+                    "45min", "R$ 120,00",
                     "Descrição", "Nutrição", "4.5"),
             new Profissional(4, "Camila", "Almeida", "11999999999", "1990-03-10", "22222222222", "Rua 2",
                     "camila@gmail.com",
@@ -63,7 +63,7 @@ public class Controller {
                     List.of("Depressão", "Ansiedade", "Estresse", "Fobias", "Transtornos Alimentares", "Autoestima",
                             "Relacionamentos", "Sexualidade"),
                     "https://www.linkedin.com/in/camila-almeida-71b53028/",
-                    "1h", "R$ 120,00",
+                    "60min", "R$ 120,00",
                     "Descrição", "Psicologia", "4"),
 
             new Profissional(5, "Gabriela", "Santos", "11999999999", "1995-05-20", "33333333333", "Rua 3",
@@ -72,7 +72,7 @@ public class Controller {
                     List.of("Emagrecimento", "Ganho de Massa Muscular", "Reeducação Alimentar", "Doenças Metabólicas",
                             "Intolerâncias e Alergias Alimentares", "Dificuldades com a Alimentação"),
                     "https://www.linkedin.com/in/gabriela-santos-23198310b/",
-                    "1h30min", "R$ 150,00",
+                    "45min", "R$ 150,00",
                     "Descrição", "Nutrição", "5"),
 
             new Profissional(6, "Roberto", "Oliveira", "11999999999", "1985-12-01", "44444444444", "Rua 4",
@@ -90,7 +90,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "1h", "R$ 130,00",
+                    "60min", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                 new Profissional(8, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -99,7 +99,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "1h", "R$ 130,00",
+                    "60min", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                     new Profissional(9, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -108,7 +108,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "1h", "R$ 130,00",
+                    "60min", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                     new Profissional(10, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -116,7 +116,7 @@ public class Controller {
                     "https://avatars.githubusercontent.com/u/125280336?s=96&v=4",
                     List.of("Gestantes", "Puérperas", "Crianças"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "1h", "R$ 130,00",
+                    "60min", "R$ 130,00",
                     "Descrição", "Nutrição", "5"),
 
                     new Profissional(11, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
@@ -125,7 +125,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    "1h", "R$ 130,00",
+                    "60min", "R$ 130,00",
                     "Descrição", "Nutrição", "5"));
                     
 
