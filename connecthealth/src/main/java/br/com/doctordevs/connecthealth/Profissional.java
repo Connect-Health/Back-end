@@ -15,14 +15,14 @@ public class Profissional {
     private String avatar;
     private List especialidade;
     private String certificado;
-    private String duracao;
+    private int duracao;
     private String preco;
     private String descricao;
     private String areaAtuacao;
     private String avaliacao;
 
     public Profissional(Number id, String nome, String sobrenome, String telefone, String dataNascimento, String cpf,
-            String endereco, String email, String avatar, List especialidade, String certificado, String duracao,
+            String endereco, String email, String avatar, List especialidade, String certificado, int duracao,
             String preco, String descricao, String areaAtuacao, String avaliacao) {
         this.id = id;
         this.nome = nome;
@@ -130,11 +130,11 @@ public class Profissional {
         this.certificado = certificado;
     }
 
-    public String getDuracao() {
+    public int getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(String duracao) {
+    public void setDuracao(int duracao) {
         this.duracao = duracao;
     }
 
