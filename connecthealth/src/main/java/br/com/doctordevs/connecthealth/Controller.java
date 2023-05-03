@@ -57,7 +57,7 @@ public class Controller {
                             "Vícios", "Orientação Profissional", "Orientação Vocacional", "Orientação de Carreira"),
                     "https://conhecimento.sti.ufpb.br/uploads/images/gallery/2022-08/scaled-1680-/1Mnt48ERQnwewxg2-image-1661441161358.png",
                     45, "R$ 80,00",
-                    "Descrição", "Psicologia", "4.9"),
+                    "Descrição", "Psicologia", "4.5"),
             new Profissional(3, "Pedro", "Rodrigues", "11977777777", "1985-12-10", "33333333333", "Rua 3", "pedro@gmail",
                     "https://avatars.githubusercontent.com/u/99509845?s=96&v=4",
                     List.of("Obesidade", "Diabetes", "Hipertensão",
@@ -74,7 +74,7 @@ public class Controller {
                             "Relacionamentos", "Sexualidade"),
                     "https://www.linkedin.com/in/camila-almeida-71b53028/",
                     55, "R$ 120,00",
-                    "Descrição", "Psicologia", "4"),
+                    "Descrição", "Psicologia", "1.5"),
 
             new Profissional(5, "Gabriela", "Santos", "11999999999", "1995-05-20", "33333333333", "Rua 3",
                     "gabriela@gmail.com",
@@ -83,7 +83,7 @@ public class Controller {
                             "Intolerâncias e Alergias Alimentares", "Dificuldades com a Alimentação"),
                     "https://www.linkedin.com/in/gabriela-santos-23198310b/",
                         60, "R$ 150,00",
-                    "Descrição", "Nutrição", "5"),
+                    "Descrição", "Nutrição", "1"),
 
                         new Profissional(6, "Roberto", "Oliveira", "11999999999", "1985-12-01", "44444444444", "Rua 4",
                                         "roberto@gmail.com",
@@ -102,7 +102,7 @@ public class Controller {
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
                     50, "R$ 130,00",
-                    "Descrição", "Nutrição", "5"),
+                    "Descrição", "Nutrição", "3"),
 
                 new Profissional(8, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
                     "mariana@gmail.com",
@@ -111,7 +111,7 @@ public class Controller {
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
                     45, "R$ 130,00",
-                    "Descrição", "Nutrição", "5"),
+                    "Descrição", "Nutrição", "2"),
 
                     new Profissional(9, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
                     "mariana@gmail.com",
@@ -128,7 +128,7 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças"),
                     "https://www.linkedin.com/in/marianalima/",
                     60, "R$ 130,00",
-                    "Descrição", "Nutrição", "5"),
+                    "Como especialista em marketing digital, eu ajudo empresas a aumentar sua presença online e a alcançar seus objetivos de negócios. Tenho experiência em gerenciamento de campanhas de publicidade, SEO, mídia social e email marketing. Além disso, sou hábil em análise de dados e utilizo esses insights para tomar decisões estratégicas. Sempre me dedico a encontrar a melhor maneira de ajudar meus clientes a ter sucesso online.", "Nutrição", "4"),
 
                     new Profissional(11, "Mariana", "Lima", "11999999999", "1988-08-15", "55555555555", "Rua 5",
                     "mariana@gmail.com",
@@ -136,8 +136,8 @@ public class Controller {
                     List.of("Gestantes", "Puérperas", "Crianças", "Adolescentes", "Obesidade Infantil",
                             "Alimentação Saudável", "Nutrição Esportiva"),
                     "https://www.linkedin.com/in/marianalima/",
-                    60, "R$ 130,00",
-                    "Descrição", "Nutrição", "5"));
+                    60, "R$ 110,00",
+                    "Sou um desenvolvedor web experiente com mais de 5 anos de experiência em projetos de larga escala. Trabalho com uma variedade de tecnologias, incluindo React, Angular, Node.js e AWS, e tenho habilidades em design responsivo e desenvolvimento móvel. Sou apaixonado por encontrar soluções criativas e eficazes para problemas complexos e estou sempre buscando aprender mais.", "Nutrição", "4.6"));
                     
 
     @GetMapping(value = "/pacientes")
