@@ -2,13 +2,8 @@ package br.com.doctordevs.connecthealth;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.batch.BatchProperties.Jdbc;
-
-import java.util.List;
-import java.util.Map;
 
 import javax.sql.DataSource;
-import javax.swing.tree.RowMapper;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;;
