@@ -28,7 +28,7 @@ public class ConnecthealthApplication {
 		} catch (Exception e) {
 			System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
 		}
-			
+
 	}
 
 }

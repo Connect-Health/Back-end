@@ -1,4 +1,4 @@
-package br.com.doctordevs.connecthealth;
+package br.com.doctordevs.connecthealth.model;
 
 public class Paciente {
 

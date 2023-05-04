@@ -1,10 +1,10 @@
-package br.com.doctordevs.connecthealth;
+package br.com.doctordevs.connecthealth.model;
 
 import java.util.List;
 
 public class Profissional {
 
-    private Number id;
+    private Integer id;
     private String nome;
     private String sobrenome;
     private String telefone;
@@ -19,11 +19,11 @@ public class Profissional {
     private String preco;
     private String descricao;
     private String areaAtuacao;
-    private String avaliacao;
+    private Double avaliacao;
 
-    public Profissional(Number id, String nome, String sobrenome, String telefone, String dataNascimento, String cpf,
+    public Profissional(Integer id, String nome, String sobrenome, String telefone, String dataNascimento, String cpf,
             String endereco, String email, String avatar, List especialidade, String certificado, int duracao,
-            String preco, String descricao, String areaAtuacao, String avaliacao) {
+            String preco, String descricao, String areaAtuacao, Double avaliacao) {
         this.id = id;
         this.nome = nome;
         this.sobrenome = sobrenome;
@@ -42,11 +42,11 @@ public class Profissional {
         this.avaliacao = avaliacao;
     }
 
-    public Number getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Number id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -162,11 +162,11 @@ public class Profissional {
         this.areaAtuacao = areaAtuacao;
     }
 
-    public String getAvaliacao() {
+    public Double getAvaliacao() {
         return avaliacao;
     }
 
-    public void setAvaliacao(String avaliacao) {
+    public void setAvaliacao(Double avaliacao) {
         this.avaliacao = avaliacao;
     }
 
