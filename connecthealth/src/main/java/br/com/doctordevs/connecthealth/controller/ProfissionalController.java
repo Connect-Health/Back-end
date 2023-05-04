@@ -42,8 +42,8 @@ public class ProfissionalController {
         return profissionalService.buscarProfissionaisPorAvaliacao(avaliacao);
     }
 
-    @GetMapping("/profissionais/especialidade")
-    public List<Profissional> listarProfissionaisPorEspecialidade(String especialidade) {
+    @GetMapping("/profissionais/especialidade/{especialidade}")
+    public List<Profissional> listarProfissionaisPorEspecialidade(@PathVariable("especialidade") String especialidade) {
         return profissionalService.buscarProfissionaisPorEspecialidade(especialidade);
     }
 
