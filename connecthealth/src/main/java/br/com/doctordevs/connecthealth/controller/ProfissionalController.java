@@ -12,7 +12,7 @@ import br.com.doctordevs.connecthealth.service.ProfissionalService;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173")
 public class ProfissionalController {
 
     private final ProfissionalService profissionalService;
