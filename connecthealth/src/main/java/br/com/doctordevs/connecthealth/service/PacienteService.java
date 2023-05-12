@@ -26,7 +26,7 @@ public class PacienteService {
         pacienteRepository.deleteById(pacienteId);
     }
 
-    public void saveOrUpdate(Paciente paciente) {
+    public void save(Paciente paciente) {
         pacienteRepository.save(paciente);  
     }
 

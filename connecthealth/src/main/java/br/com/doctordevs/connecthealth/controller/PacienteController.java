@@ -9,12 +9,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.doctordevs.connecthealth.model.Paciente;
 import br.com.doctordevs.connecthealth.service.PacienteService;
 
 
 @RestController
+@RequestMapping("paciente")
 public class PacienteController {
 
     @Autowired
@@ -40,15 +42,16 @@ public class PacienteController {
     @PostMapping("/paciente")  
     private int savePaciente(@RequestBody Paciente paciente)   
     {  
-    pacienteService.saveOrUpdate(paciente);  
-    return paciente.getPacienteId();  
+        pacienteService.save(paciente);  
+        return paciente.getPacienteId();  
     }  
 
     @PutMapping("/paciente")  
     private Paciente update(@RequestBody Paciente paciente)   
     {  
-    pacienteService.saveOrUpdate(paciente);  
-    return paciente;  
-    }  
+        pacienteService.save(paciente);  
+        return paciente;  
+    }
+
 }
 

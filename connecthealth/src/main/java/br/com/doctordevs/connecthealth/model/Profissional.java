@@ -58,27 +58,6 @@ public class Profissional {
     @Column
     private Double avaliacao;
 
-    public Profissional(Integer id, String nome, String sobrenome, String telefone, String dataNascimento, String cpf,
-            String endereco, String email, String avatar, List especialidade, String certificado, int duracao,
-            String preco, String descricao, String areaAtuacao, Double avaliacao) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.telefone = telefone;
-        this.dataNascimento = dataNascimento;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.email = email;
-        this.avatar = avatar;
-        this.especialidade = especialidade;
-        this.certificado = certificado;
-        this.duracao = duracao;
-        this.preco = preco;
-        this.descricao = descricao;
-        this.areaAtuacao = areaAtuacao;
-        this.avaliacao = avaliacao;
-    }
-
     public Integer getId() {
         return id;
     }
