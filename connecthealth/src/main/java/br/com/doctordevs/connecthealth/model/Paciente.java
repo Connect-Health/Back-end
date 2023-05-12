@@ -1,26 +1,47 @@
 package br.com.doctordevs.connecthealth.model;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "paciente")
 public class Paciente {
 
+    @Id
+    private Integer pacienteId;
+
+    @Column
     private String nome;
+
+    @Column
     private String sobrenome;
+
+    @Column
     private String telefone;
+
+    @Column
     private String dataNascimento;
+
+    @Column
     private String cpf;
+
+    @Column
     private String endereco;
+
+    @Column
     private String email;
+
+    @Column
     private String avatar;
 
-    public Paciente(String nome, String sobrenome, String telefone, String dataNascimento, String cpf, String endereco,
-            String email, String avatar) {
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.telefone = telefone;
-        this.dataNascimento = dataNascimento;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.email = email;
-        this.avatar = avatar;
+    public Integer getPacienteId(){
+        return pacienteId;
+    }
+
+    public void setPacienteId(Integer pacienteId){
+        this.pacienteId = pacienteId;
     }
 
     public String getNome() {

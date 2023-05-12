@@ -2,23 +2,60 @@ package br.com.doctordevs.connecthealth.model;
 
 import java.util.List;
 
-public class Profissional {
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
+@Entity
+@Table(name = "profissional")
+public class Profissional {
+    @Id
     private Integer id;
+    
+    @Column
     private String nome;
+
+    @Column
     private String sobrenome;
+
+    @Column
     private String telefone;
+
+    @Column
     private String dataNascimento;
+    
+    @Column
     private String cpf;
+
+    @Column
     private String endereco;
+    
+    @Column
     private String email;
+    
+    @Column
     private String avatar;
+    
+    @Column
     private List especialidade;
+    
+    @Column
     private String certificado;
+    
+    @Column
     private int duracao;
+
+    @Column
     private String preco;
+    
+    @Column
     private String descricao;
+    
+    @Column
     private String areaAtuacao;
+    
+    @Column
     private Double avaliacao;
 
     public Profissional(Integer id, String nome, String sobrenome, String telefone, String dataNascimento, String cpf,

@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 @SpringBootApplication
 public class ConnecthealthApplication {
@@ -28,6 +28,9 @@ public class ConnecthealthApplication {
 		} catch (Exception e) {
 			System.out.println("Erro ao conectar ao banco de dados: " + e.getMessage());
 		}
+
+
+		
 
 	}
 

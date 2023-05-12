@@ -2,7 +2,7 @@ package br.com.doctordevs.connecthealth.service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,10 +12,11 @@ import br.com.doctordevs.connecthealth.repository.ProfissionalRepository;
 
 @Service
 public class ProfissionalService {
-
+    
+    @Autowired
     private final ProfissionalRepository profissionalRepository;
 
-    @Autowired
+    
     public ProfissionalService(ProfissionalRepository profissionalRepository) {
         this.profissionalRepository = profissionalRepository;
     }
