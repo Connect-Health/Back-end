@@ -1,5 +1,6 @@
 package br.com.doctordevs.connecthealth.model;
 
+import java.sql.Time;
 import java.util.List;
 
 import jakarta.persistence.Column;
@@ -38,13 +39,13 @@ public class Profissional {
     private String avatar;
     
     @Column
-    private List especialidade;
+    private List<String> especialidade;
     
     @Column
     private String certificado;
     
     @Column
-    private int duracao;
+    private Time duracao;
 
     @Column
     private String preco;
@@ -130,11 +131,11 @@ public class Profissional {
         this.avatar = avatar;
     }
 
-    public List getEspecialidade() {
+    public List<String> getEspecialidade() {
         return especialidade;
     }
 
-    public void setEspecialidade(List especialidade) {
+    public void setEspecialidade(List<String> especialidade) {
         this.especialidade = especialidade;
     }
 
@@ -146,11 +147,11 @@ public class Profissional {
         this.certificado = certificado;
     }
 
-    public int getDuracao() {
+    public Time getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(int duracao) {
+    public void setDuracao(Time duracao) {
         this.duracao = duracao;
     }
 
@@ -184,6 +185,10 @@ public class Profissional {
 
     public void setAvaliacao(Double avaliacao) {
         this.avaliacao = avaliacao;
+    }
+
+    public int getProfissional() {
+        return 0;
     }
 
 }

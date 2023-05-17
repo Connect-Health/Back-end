@@ -1,56 +1,55 @@
-// package br.com.doctordevs.connecthealth.controller;
+package br.com.doctordevs.connecthealth.controller;
+import java.util.List;
 
-// import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import br.com.doctordevs.connecthealth.model.Profissional;
+import br.com.doctordevs.connecthealth.service.ProfissionalService;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.web.bind.annotation.CrossOrigin;
-// import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
-// import org.springframework.web.bind.annotation.RestController;
-// import br.com.doctordevs.connecthealth.model.Profissional;
-// import br.com.doctordevs.connecthealth.service.ProfissionalService;
-// import jakarta.servlet.http.HttpServletResponse;
 
-// @RestController
-// @CrossOrigin(origins = "*")
-// public class ProfissionalController {
+@RestController
+@RequestMapping("/profissional")
+public class ProfissionalController {
 
-//     @Autowired
-//     private final ProfissionalService profissionalService;
+    @Autowired
+    private ProfissionalService profissionalService;
 
-//     public ProfissionalController(ProfissionalService profissionalService) {
-//         this.profissionalService = profissionalService;
-//     }
+    @GetMapping
+    public List<Profissional> getAllPaciente(){
+        return profissionalService.getAllProfissional();
+    }
 
-//     @GetMapping("/profissionais")
-//     public List<Profissional> listarProfissionais(HttpServletResponse response) {
-//         response.setHeader("Access-Control-Allow-Origin", "*");
-//         return profissionalService.listarProfissionais();
-//     }
+    @GetMapping("/profissional/{profissionalId}")
+    public Profissional getProfissional(@PathVariable("profissionalId") int profissionalId){
+        return profissionalService.getProfissional(profissionalId);
 
-//     @GetMapping("/profissionais/nutricionistas")
-//     public List<Profissional> listarNutricionistas() {
-//         return profissionalService.buscarNutricionistas();
-//     }
+    }
 
-//     @GetMapping("/profissionais/psicologos")
-//     public List<Profissional> listarPsicologos() {
-//         return profissionalService.buscarPsicologos();
-//     }
+    @DeleteMapping("/profissional/{profissionalId}")  
+    private void deleteProfissional(@PathVariable("profissionalId") int profissionalId)   
+    {  
+        profissionalService.delete(profissionalId);  
+    }
 
-//     @GetMapping("/profissionais/avaliacao/{avaliacao}")
-//     public List<Profissional> listarProfissionaisPorAvaliacao(@PathVariable("avaliacao") Double avaliacao) {
-//         return profissionalService.buscarProfissionaisPorAvaliacao(avaliacao);
-//     }
+    @PostMapping("/profissional")  
+    private int saveProfissional(@RequestBody Profissional profissional)   
+    {  
+        profissionalService.save(profissional);  
+        return profissional.getProfissional();  
+    }  
 
-//     @GetMapping("/profissionais/especialidade/{especialidade}")
-//     public List<Profissional> listarProfissionaisPorEspecialidade(@PathVariable("especialidade") String especialidade) {
-//         return profissionalService.buscarProfissionaisPorEspecialidade(especialidade);
-//     }
+    @PutMapping("/profissional")  
+    private Profissional update(@RequestBody  Profissional profissional)   
+    {  
+        profissionalService.save(profissional);  
+        return profissional;  
+    }
 
-//     @GetMapping("/profissionais/{id}")
-//     public Profissional buscarProfissionalPorId(@PathVariable("id") int id) {
-//         return profissionalService.buscarProfissionalPorId(id).orElseThrow();
-//     }
-
-// }
+}

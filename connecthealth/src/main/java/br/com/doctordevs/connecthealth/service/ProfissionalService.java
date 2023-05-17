@@ -1,53 +1,37 @@
-// package br.com.doctordevs.connecthealth.service;
+package br.com.doctordevs.connecthealth.service;
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import br.com.doctordevs.connecthealth.model.Profissional;
+import br.com.doctordevs.connecthealth.repository.ProfissionalRepository;
 
-// import java.util.List;
-// import java.util.Optional;
+@Service
+public class ProfissionalService {
 
+    @Autowired
+    ProfissionalRepository profissionalRepository;
 
-// import org.springframework.beans.factory.annotation.Autowired;
-// import org.springframework.stereotype.Service;
+    public List<Profissional> getAllProfissional() {
+        List<Profissional> profissional = new ArrayList<Profissional>();
+        profissionalRepository.findAll().forEach(profissional1 -> profissional.add(profissional1));
+        return profissional;
+    }
 
-// import br.com.doctordevs.connecthealth.model.Profissional;
-// import br.com.doctordevs.connecthealth.repository.ProfissionalRepository;
+    public Profissional getProfissional(int profissionalId) {
+        return profissionalRepository.findById(profissionalId).get();
+    }
 
-// @Service
-// public class ProfissionalService {
-    
-//     @Autowired
-//     private final ProfissionalRepository profissionalRepository;
+    public void delete(int profissionalId) {
+        profissionalRepository.deleteById(profissionalId);
+    }
 
-    
-//     public ProfissionalService(ProfissionalRepository profissionalRepository) {
-//         this.profissionalRepository = profissionalRepository;
-//     }
+    public void save(Profissional profissional) {
+        profissionalRepository.save(profissional);  
+    }
 
-//     public List<Profissional> listarProfissionais() {
-//         return profissionalRepository.getProfissionais();
-//     }
-
-//     public Optional<Profissional> buscarProfissionalPorId(int id) {
-//         return profissionalRepository.getProfissionais().stream()
-//                 .filter(profissional -> profissional.getId() == id)
-//                 .findFirst();
-//     }
-
-//     public List<Profissional> buscarProfissionaisPorEspecialidade(String especialidade) {
-//         return profissionalRepository.getProfissionais().stream()
-//                 .filter(profissional -> profissional.getEspecialidade().contains(especialidade))
-//                 .toList();
-//     }
-
-//     public List<Profissional> buscarProfissionaisPorAvaliacao(double avaliacao) {
-//         return profissionalRepository.getProfissionais().stream()
-//                 .filter(profissional -> profissional.getAvaliacao() >= avaliacao)
-//                 .toList();
-//     }
-
-//     public List<Profissional> buscarNutricionistas() {
-//         return profissionalRepository.getNutricionistas();
-//     }
-
-//     public List<Profissional> buscarPsicologos() {
-//         return profissionalRepository.getPsicologos();
-//     }
-// }
+    public void update(Profissional profissional, int profissionalId)   
+    {  
+        profissionalRepository.save(profissional);  
+    }  
+}

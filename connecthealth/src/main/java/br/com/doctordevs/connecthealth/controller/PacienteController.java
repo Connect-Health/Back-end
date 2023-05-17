@@ -16,13 +16,13 @@ import br.com.doctordevs.connecthealth.service.PacienteService;
 
 
 @RestController
-@RequestMapping("paciente")
+@RequestMapping("/paciente")
 public class PacienteController {
 
     @Autowired
     private PacienteService pacienteService;
 
-    @GetMapping("/paciente")
+    @GetMapping
     public List<Paciente> getAllPaciente(){
         return pacienteService.getAllPaciente();
     }
