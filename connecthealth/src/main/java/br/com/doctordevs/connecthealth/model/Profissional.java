@@ -1,46 +1,63 @@
 package br.com.doctordevs.connecthealth.model;
 
+import java.sql.Time;
 import java.util.List;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "profissional")
 public class Profissional {
-
+    @Id
     private Integer id;
+    
+    @Column
     private String nome;
-    private String sobrenome;
-    private String telefone;
-    private String dataNascimento;
-    private String cpf;
-    private String endereco;
-    private String email;
-    private String avatar;
-    private List especialidade;
-    private String certificado;
-    private int duracao;
-    private String preco;
-    private String descricao;
-    private String areaAtuacao;
-    private Double avaliacao;
 
-    public Profissional(Integer id, String nome, String sobrenome, String telefone, String dataNascimento, String cpf,
-            String endereco, String email, String avatar, List especialidade, String certificado, int duracao,
-            String preco, String descricao, String areaAtuacao, Double avaliacao) {
-        this.id = id;
-        this.nome = nome;
-        this.sobrenome = sobrenome;
-        this.telefone = telefone;
-        this.dataNascimento = dataNascimento;
-        this.cpf = cpf;
-        this.endereco = endereco;
-        this.email = email;
-        this.avatar = avatar;
-        this.especialidade = especialidade;
-        this.certificado = certificado;
-        this.duracao = duracao;
-        this.preco = preco;
-        this.descricao = descricao;
-        this.areaAtuacao = areaAtuacao;
-        this.avaliacao = avaliacao;
-    }
+    @Column
+    private String sobrenome;
+
+    @Column
+    private String telefone;
+
+    @Column
+    private String dataNascimento;
+    
+    @Column
+    private String cpf;
+
+    @Column
+    private String endereco;
+    
+    @Column
+    private String email;
+    
+    @Column
+    private String avatar;
+    
+    @Column
+    private List<String> especialidade;
+    
+    @Column
+    private String certificado;
+    
+    @Column
+    private Time duracao;
+
+    @Column
+    private String preco;
+    
+    @Column
+    private String descricao;
+    
+    @Column
+    private String areaAtuacao;
+    
+    @Column
+    private Double avaliacao;
 
     public Integer getId() {
         return id;
@@ -114,11 +131,11 @@ public class Profissional {
         this.avatar = avatar;
     }
 
-    public List getEspecialidade() {
+    public List<String> getEspecialidade() {
         return especialidade;
     }
 
-    public void setEspecialidade(List especialidade) {
+    public void setEspecialidade(List<String> especialidade) {
         this.especialidade = especialidade;
     }
 
@@ -130,11 +147,11 @@ public class Profissional {
         this.certificado = certificado;
     }
 
-    public int getDuracao() {
+    public Time getDuracao() {
         return duracao;
     }
 
-    public void setDuracao(int duracao) {
+    public void setDuracao(Time duracao) {
         this.duracao = duracao;
     }
 
@@ -168,6 +185,10 @@ public class Profissional {
 
     public void setAvaliacao(Double avaliacao) {
         this.avaliacao = avaliacao;
+    }
+
+    public int getProfissional() {
+        return 0;
     }
 
 }
