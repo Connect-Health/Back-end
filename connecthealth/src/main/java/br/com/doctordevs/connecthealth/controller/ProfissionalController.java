@@ -28,13 +28,13 @@ public class ProfissionalController {
         return profissionalService.getAllProfissional();
     }
 
-    @GetMapping("/profissional/{profissionalId}")
+    @GetMapping("/{profissionalId}")
     public Profissional getProfissional(@PathVariable("profissionalId") int profissionalId){
         return profissionalService.getProfissionalId(profissionalId);
 
     }
 
-    @DeleteMapping("/profissional/{profissionalId}")  
+    @DeleteMapping("/{profissionalId}")  
     private void deleteProfissional(@PathVariable("profissionalId") int profissionalId)   
     {  
         profissionalService.delete(profissionalId);  
