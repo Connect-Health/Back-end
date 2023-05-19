@@ -40,18 +40,18 @@ public class ProfissionalController {
         profissionalService.delete(profissionalId);  
     }
 
-    @PostMapping("/profissional")  
+    @PostMapping  
     private int saveProfissional(@RequestBody Profissional profissional)   
     {  
-        profissionalService.save(profissional);  
-        return profissional.getprofissionalId();  
+        profissionalService.save(profissional);
+        return profissional.getprofissionalId();
     }  
 
-    @PutMapping("/profissional")  
+    @PutMapping  
     private Profissional update(@RequestBody  Profissional profissional)   
     {  
-        profissionalService.save(profissional);  
-        return profissional;  
+        profissionalService.save(profissional);
+        return profissional;
     }
 
 }
