@@ -18,7 +18,7 @@ public class ProfissionalService {
         return profissional;
     }
 
-    public Profissional getProfissional(int profissionalId) {
+    public Profissional getProfissionalId(int profissionalId) {
         return profissionalRepository.findById(profissionalId).get();
     }
 
