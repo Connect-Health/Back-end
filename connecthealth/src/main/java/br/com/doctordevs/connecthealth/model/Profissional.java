@@ -1,11 +1,12 @@
 package br.com.doctordevs.connecthealth.model;
 
 import java.sql.Time;
-import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,48 +16,47 @@ public class Profissional {
     @Id
     private Integer id;
     
-    @Column
+    @Column(nullable = false)
     private String nome;
 
-    @Column
+    @Column(nullable = false)
     private String sobrenome;
 
-    @Column
+    @Column(nullable = false, unique = true, length = 11)
     private String telefone;
 
     @Column
     private String dataNascimento;
     
-    @Column
+    @Column(nullable = false, unique = true, length = 11)
     private String cpf;
 
-    @Column
-    private String endereco;
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "endereco_id")
+    private Endereco endereco;
     
-    @Column
+    @Column(nullable = false)
     private String email;
     
-    @Column
-    private String avatar;
+    @Column(nullable = false)
+    private String urlAvatar;
     
-    @Column
-    private List<String> especialidade;
+    @Column(nullable = false, unique = true)
+    private String urlCertificado;
     
-    @Column
-    private String certificado;
-    
-    @Column
+    @Column(nullable = false)
     private Time duracao;
 
-    @Column
-    private String preco;
+    @Column(nullable = false)
+    private Float preco;
     
-    @Column
+    @Column(nullable = false)
     private String descricao;
     
-    @Column
-    private String areaAtuacao;
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "area_id")
+    private Area areaAtuacao;
     
     @Column
-    private Double avaliacao;
+    private Float avaliacao;
 }

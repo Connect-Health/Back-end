@@ -23,17 +23,17 @@ public class Paciente {
     @Column(nullable = false)
     private String sobrenome;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true, length = 11)
     private String telefone;
 
     @Column(nullable = false)
     private Date dataNascimento;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true, length = 11)
     private String cpf;
 
     @ManyToOne
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name = "endereco_id")
     private Endereco endereco;
 
     @Column(nullable = false)
@@ -47,6 +47,4 @@ public class Paciente {
 
     @Column(nullable = false)
     private String sexo;
-
-
 }
