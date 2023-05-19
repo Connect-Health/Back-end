@@ -2,110 +2,51 @@ package br.com.doctordevs.connecthealth.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 
 @Entity
-@Table(name = "paciente")
+@Table(name = "tb_paciente")
 public class Paciente {
 
     @Id
     private Integer pacienteId;
 
-    @Column
+    @Column(nullable = false)
     private String nome;
 
-    @Column
+    @Column(nullable = false)
     private String sobrenome;
 
-    @Column
+    @Column(nullable = false)
     private String telefone;
 
-    @Column
-    private String dataNascimento;
+    @Column(nullable = false)
+    private Date dataNascimento;
 
-    @Column
+    @Column(nullable = false)
     private String cpf;
 
-    @Column
-    private String endereco;
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Endereco endereco;
 
-    @Column
+    @Column(nullable = false)
     private String email;
 
-    @Column
-    private String avatar;
+    @Column(nullable = false)
+    private String urlAvatar;
 
-    public Integer getPacienteId(){
-        return pacienteId;
-    }
+    @Column(nullable = false)
+    private String senha;
 
-    public void setPacienteId(Integer pacienteId){
-        this.pacienteId = pacienteId;
-    }
+    @Column(nullable = false)
+    private String sexo;
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getDataNascimento() {
-        return dataNascimento;
-    }
-
-    public void setDataNascimento(String dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAvatar() {
-        return avatar;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
-    }
 
 }
