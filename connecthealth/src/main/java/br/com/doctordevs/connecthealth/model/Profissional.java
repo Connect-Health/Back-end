@@ -1,22 +1,26 @@
 package br.com.doctordevs.connecthealth.model;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "tb_profissional")
 public class Profissional {
-    
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer profissionalId;
-    
+
     @Column(nullable = false)
     private String nome;
 
@@ -28,7 +32,7 @@ public class Profissional {
 
     @Column
     private String dataNascimento;
-    
+
     @Column(nullable = false, unique = true, length = 11)
     private String cpf;
 
@@ -38,32 +42,32 @@ public class Profissional {
 
     @Column(nullable = false)
     private String email;
-    
+
     @Column(nullable = false)
     private String urlAvatar;
-    
+
     @Column(nullable = false, unique = true)
     private String urlCertificado;
-    
+
     @Column(nullable = false)
     private String duracao;
 
     @Column(nullable = false)
     private Float preco;
-    
+
     @Column(nullable = false)
     private String descricao;
-    
+
     @ManyToOne
     @JoinColumn(nullable = false, name = "area_id")
     private Area areaAtuacao;
-    
+
     @Column
     private Float avaliacao;
 
-    @ManyToOne
-    @JoinColumn(nullable = false, name = "especialidade_id")
-    private Especialidade especialidade;
+    @ManyToMany
+    @JoinTable(name = "tb_especialidade_profissional", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "especialidade_id"))
+    private List<Especialidade> especialidade;
 
     public Integer getprofissionalId() {
         return profissionalId;
@@ -185,11 +189,11 @@ public class Profissional {
         this.avaliacao = avaliacao;
     }
 
-    public Especialidade getEspecialidade() {
+    public List<Especialidade> getEspecialidade() {
         return especialidade;
     }
 
-    public void setEspecialidade(Especialidade especialidade) {
+    public void setEspecialidade(List<Especialidade> especialidade) {
         this.especialidade = especialidade;
     }
 
