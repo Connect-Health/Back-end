@@ -15,7 +15,7 @@ public class Especialidade {
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Integer especialidadeId;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String nome;
 
     public Integer getEspecialidadeId() {
