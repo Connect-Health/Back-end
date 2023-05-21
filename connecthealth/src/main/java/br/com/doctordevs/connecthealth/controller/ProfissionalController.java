@@ -28,6 +28,19 @@ public class ProfissionalController {
     @GetMapping
     public List<Profissional> getAllPaciente(){
         return profissionalService.getAllProfissional();
+
+    }
+
+    @GetMapping("/psicologos")
+    public List<Profissional> getAllPsicologos(){
+        return profissionalService.getAllPsicologos();
+
+    }
+
+    @GetMapping("/nutricionistas")
+    public List<Profissional> getAllNutricionistas(){
+        return profissionalService.getAllNutricionistas();
+
     }
 
     @GetMapping("/{profissionalId}")
