@@ -27,7 +27,7 @@ public class PacienteService {
     }
 
     public void save(Paciente paciente) {
-        pacienteRepository.save(paciente);  
+        pacienteRepository.save(paciente);
     }
 
     public void update(Paciente paciente, int pacienteId)   

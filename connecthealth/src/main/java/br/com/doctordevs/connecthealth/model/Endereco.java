@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 public class Endereco {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer enderecoId;
 
     @Column(nullable = false)
