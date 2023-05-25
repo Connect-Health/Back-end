@@ -9,6 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ConnecthealthApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ConnecthealthApplication.class, args);
+		SpringApplication.run(ConnecthealthAplication.class, args);
 	}
 }
