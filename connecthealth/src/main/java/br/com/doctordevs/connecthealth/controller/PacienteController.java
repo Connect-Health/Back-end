@@ -29,26 +29,26 @@ public class PacienteController {
         return pacienteService.getAllPaciente();
     }
 
-    @GetMapping("/paciente/{pacienteId}")
+    @GetMapping("/{pacienteId}")
     public Paciente getPaciente(@PathVariable("pacienteId") int pacienteId){
-        return pacienteService.getPaciente(pacienteId);
+        return pacienteService.getPacienteId(pacienteId);
 
     }
 
-    @DeleteMapping("/paciente/{pacienteId}")  
+    @DeleteMapping("/{pacienteId}")  
     private void deletePaciente(@PathVariable("pacienteiId") int pacienteId)   
     {  
         pacienteService.delete(pacienteId);  
     }
 
-    @PostMapping("/paciente")  
+    @PostMapping
     private int savePaciente(@RequestBody Paciente paciente)   
     {  
         pacienteService.save(paciente);  
         return paciente.getPacienteId();  
     }  
 
-    @PutMapping("/paciente")  
+    @PutMapping
     private Paciente update(@RequestBody Paciente paciente)   
     {  
         pacienteService.save(paciente);  

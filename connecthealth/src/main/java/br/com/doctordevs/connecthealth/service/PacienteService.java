@@ -18,7 +18,7 @@ public class PacienteService {
         return paciente;
     }
 
-    public Paciente getPaciente(int pacienteId) {
+    public Paciente getPacienteId(int pacienteId) {
         return pacienteRepository.findById(pacienteId).get();
     }
 
