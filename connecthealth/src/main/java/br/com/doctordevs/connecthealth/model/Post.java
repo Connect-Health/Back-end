@@ -3,14 +3,11 @@ package br.com.doctordevs.connecthealth.model;
 import java.sql.Blob;
 import java.sql.Date;
 
-import org.hibernate.annotations.ManyToAny;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
@@ -28,7 +25,7 @@ public class Post {
     private String conteudo;
 
     @Column
-    private Blob imagem;
+    private String imagem;
 
     @Column
     private Date dataPublicacao;
@@ -61,11 +58,11 @@ public class Post {
     this.conteudo = conteudo;
  }
 
- public Blob getImagem() {
+ public String getImagem() {
     return imagem;
  }
 
- public void setImagem(Blob imagem) {
+ public void setImagem(String imagem) {
     this.imagem = imagem;
  }
 
