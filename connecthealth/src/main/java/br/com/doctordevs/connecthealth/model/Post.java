@@ -3,12 +3,37 @@ package br.com.doctordevs.connecthealth.model;
 import java.sql.Blob;
 import java.sql.Date;
 
+import org.hibernate.annotations.ManyToAny;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_post")
 public class Post {
+
+   @Id
+   @GeneratedValue(strategy = GenerationType.AUTO)
     private int postId;
+
+    @Column
     private String titulo;
+
+    @Column
     private String conteudo;
+
+    @Column
     private Blob imagem;
+
+    @Column
     private Date dataPublicacao;
+
+    @Column
     private int profissionalId;
 
     

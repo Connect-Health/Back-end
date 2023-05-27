@@ -1,36 +1,38 @@
 package br.com.doctordevs.connecthealth.service;
-
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import br.com.doctordevs.connecthealth.model.Post;
 import br.com.doctordevs.connecthealth.repository.PostRepository;
 
+@Service
 public class PostService {
 
+    @Autowired
     private PostRepository postRepository;
 
-    public PostService(Connection connection) {
-        this.postRepository = new PostRepository(connection);
+    public List<Post> getAllPost() {
+        List<Post> post = new ArrayList<Post>();
+        postRepository.findAll().forEach(post1 -> post.add(post1));
+        return post;
     }
 
-    public void createPost(Post post) {
-        try {
-            postRepository.createPost(post);
-            System.out.println("Post criado com sucesso.");
-        } catch (SQLException e) {
-            System.out.println("Erro ao criar o post: " + e.getMessage());
-        }
+    public Post getPost(int postId) {
+        return postRepository.findById(postId).get();
     }
 
-    public List<Post> getAllPosts() {
-        try {
-            return postRepository.getAllPosts();
-        } catch (SQLException e) {
-            System.out.println("Erro ao obter os posts: " + e.getMessage());
-            return null;
-        }
+    public void delete(int postId) {
+        postRepository.deleteById(postId);
     }
+
+    public void save(Post post) {
+        postRepository.save(post);
+    }
+
+    public void update(Post post, int postId)   
+    {  
+        postRepository.save(post);  
+    }  
 }
-''

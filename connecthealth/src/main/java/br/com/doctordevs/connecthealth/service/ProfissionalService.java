@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import br.com.doctordevs.connecthealth.model.Especialidade;
 import br.com.doctordevs.connecthealth.model.Profissional;
 import br.com.doctordevs.connecthealth.repository.ProfissionalRepository;
 
