@@ -48,8 +48,9 @@ public class Paciente {
     @Column(nullable = false)
     private String senha;
 
-    @Column(nullable = false)
-    private String sexo;
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "genero_id")
+    private Genero genero;
 
     public Integer getPacienteId() {
         return pacienteId;
@@ -131,12 +132,12 @@ public class Paciente {
         this.senha = senha;
     }
 
-    public String getSexo() {
-        return sexo;
+    public Genero getGenero() {
+        return genero;
     }
 
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
+    public void setGenero(Genero generoId) {
+        this.genero = generoId;
     }
 
 }
