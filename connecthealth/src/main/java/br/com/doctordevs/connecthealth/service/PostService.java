@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 
+import br.com.doctordevs.connecthealth.model.Post;
+import br.com.doctordevs.connecthealth.repository.PostRepository;
+
 public class PostService {
 
     private PostRepository postRepository;
@@ -30,3 +33,4 @@ public class PostService {
         }
     }
 }
+''
