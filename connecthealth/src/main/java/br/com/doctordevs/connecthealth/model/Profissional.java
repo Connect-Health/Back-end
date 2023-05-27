@@ -69,6 +69,13 @@ public class Profissional {
     @JoinTable(name = "tb_especialidade_profissional", joinColumns = @JoinColumn(name = "profissional_id"), inverseJoinColumns = @JoinColumn(name = "especialidade_id"))
     private List<Especialidade> especialidade;
 
+    @Column(nullable = false)
+    private String senha;
+
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "genero_id")
+    private Genero genero;
+
     public Integer getprofissionalId() {
         return profissionalId;
     }
@@ -195,6 +202,22 @@ public class Profissional {
 
     public void setEspecialidade(List<Especialidade> especialidade) {
         this.especialidade = especialidade;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero generoId) {
+        this.genero = generoId;
     }
 
 }
