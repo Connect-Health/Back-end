@@ -27,31 +27,27 @@ public class PostController {
         return postService.getAllPost();
     }
 
-    @GetMapping("/post/{postId}")
-    public Post getPost(@PathVariable("postId") int postId){
+    @GetMapping("/{postId}")
+    public Post getPost(@PathVariable("postId") int postId) {
         return postService.getPost(postId);
 
     }
 
-    @DeleteMapping("/post/{postId}")  
-    private void deletePost(@PathVariable("postId") int postId)   
-    {  
-        postService.delete(postId);  
+    @DeleteMapping("/{postId}")
+    private void deletePost(@PathVariable("postId") int postId) {
+        postService.delete(postId);
     }
 
-    
-    @PostMapping("/post")  
-    private int savePost(@RequestBody Post post)   
-    {  
-        postService.save(post);  
-        return post.getPostId();  
-    }  
+    @PostMapping
+    private int savePost(@RequestBody Post post) {
+        postService.save(post);
+        return post.getPostId();
+    }
 
-    @PutMapping("/post")  
-    private Post update(@RequestBody Post post)   
-    {  
-        postService.save(post);  
-        return post;  
+    @PutMapping
+    private Post update(@RequestBody Post post) {
+        postService.save(post);
+        return post;
     }
 
 }
