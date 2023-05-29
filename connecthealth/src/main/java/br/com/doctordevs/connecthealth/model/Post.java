@@ -1,6 +1,7 @@
 package br.com.doctordevs.connecthealth.model;
 
 import java.sql.Date;
+import java.sql.Time;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,6 +31,9 @@ public class Post {
 
    @Column
    private Date dataPublicacao;
+
+   @Column
+   private Time horaPublicacao;
 
    @ManyToOne
    @JoinColumn(name = "profissional_id")
@@ -81,5 +85,13 @@ public class Post {
 
    public void setProfissional(Profissional profissional) {
       this.profissional = profissional;
+   }
+
+   public Time getHoraPublicacao() {
+      return horaPublicacao;
+   }
+
+   public void setHoraPublicacao(Time horaPublicacao) {
+      this.horaPublicacao = horaPublicacao;
    }
 }
