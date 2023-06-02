@@ -38,14 +38,14 @@ public class EnderecoController {
             enderecoService.delete(enderecoId);
         }
     
-        @PostMapping("/endereco")
+        @PostMapping
         private int saveEndereco(@RequestBody Endereco endereco)
         {
             enderecoService.save(endereco);
             return endereco.getEnderecoId();
         }
     
-        @PutMapping("/endereco")
+        @PutMapping
         private Endereco update(@RequestBody Endereco endereco)
         {
             enderecoService.save(endereco);

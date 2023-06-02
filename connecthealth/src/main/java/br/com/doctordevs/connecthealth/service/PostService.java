@@ -1,4 +1,5 @@
 package br.com.doctordevs.connecthealth.service;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,8 +32,7 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public void update(Post post, int postId)   
-    {  
-        postRepository.save(post);  
-    }  
+    public void update(Post post, int postId) {
+        postRepository.save(post);
+    }
 }
