@@ -59,6 +59,11 @@ public class ProfissionalController {
         return profissional.getprofissionalId();
     }
 
+    @PostMapping("/login")
+    private boolean login(@RequestBody Profissional profissional) {
+        return profissionalService.login(profissional.getEmail(), profissional.getSenha());
+    }
+
     @PutMapping
     private Profissional update(@RequestBody Profissional profissional) {
         profissionalService.save(profissional);

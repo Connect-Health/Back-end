@@ -56,4 +56,15 @@ public class ProfissionalService {
     public void update(Profissional profissional, int profissionalId) {
         profissionalRepository.save(profissional);
     }
+
+    public boolean login(String email, String senha) {
+        List<Profissional> profissionais = profissionalRepository.findAll();
+        for (Profissional profissional : profissionais) {
+            if (profissional.getEmail().equals(email) && profissional.getSenha().equals(senha)) {
+                return true;
+            }
+
+        }
+        return false;
+    }
 }
