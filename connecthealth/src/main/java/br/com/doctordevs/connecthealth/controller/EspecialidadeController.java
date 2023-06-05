@@ -33,6 +33,16 @@ public class EspecialidadeController {
         return especialidadeService.getEspecialidadeId(especialidadeId);
     }
 
+    @GetMapping("/psicologia")
+    public List<Especialidade> getEspecialidadePsicologia() {
+        return especialidadeService.getEspecialidadePsicologia();
+    }
+
+    @GetMapping("/nutricao")
+    public List<Especialidade> getEspecialidadeNutricao() {
+        return especialidadeService.getEspecialidadeNutricao();
+    }
+
     @DeleteMapping("/{especialidadeId}")
     private void deleteEspecialidade(@PathVariable("especialidadeId") int especialidadeId) {
         especialidadeService.delete(especialidadeId);

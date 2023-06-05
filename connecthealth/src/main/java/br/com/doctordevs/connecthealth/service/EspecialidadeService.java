@@ -25,6 +25,28 @@ public class EspecialidadeService {
         return especialidadeRepository.findById(especialidadeId).get();
     }
 
+    public List<Especialidade> getEspecialidadePsicologia() {
+        List<Especialidade> especialidadePsicologia = new ArrayList<>();
+        List<Especialidade> especialidades = especialidadeRepository.findAll();
+        for (Especialidade especialidade : especialidades) {
+            if (especialidade.getArea().getAreaId() == 1) {
+                especialidadePsicologia.add(especialidade);
+            }
+        }
+        return especialidadePsicologia;
+    }
+
+    public List<Especialidade> getEspecialidadeNutricao() {
+        List<Especialidade> especialidadeNutricao = new ArrayList<>();
+        List<Especialidade> especialidades = especialidadeRepository.findAll();
+        for (Especialidade especialidade : especialidades) {
+            if (especialidade.getArea().getAreaId() == 2) {
+                especialidadeNutricao.add(especialidade);
+            }
+        }
+        return especialidadeNutricao;
+    }
+
     public void delete(int especialidadeId) {
         especialidadeRepository.deleteById(especialidadeId);
     }
@@ -36,4 +58,5 @@ public class EspecialidadeService {
     public void update(Especialidade especialidade, int especialidadeId) {
         especialidadeRepository.save(especialidade);
     }
+
 }

@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -12,11 +14,15 @@ import jakarta.persistence.Table;
 public class Especialidade {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer especialidadeId;
 
     @Column(nullable = false, unique = true)
     private String nome;
+
+    @ManyToOne
+    @JoinColumn(nullable = false, name = "area_id")
+    private Area area;
 
     public Integer getEspecialidadeId() {
         return especialidadeId;
@@ -33,4 +39,13 @@ public class Especialidade {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public Area getArea() {
+        return area;
+    }
+
+    public void setArea(Area area) {
+        this.area = area;
+    }
+
 }
