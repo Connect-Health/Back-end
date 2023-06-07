@@ -3,6 +3,8 @@ package br.com.doctordevs.connecthealth.service;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import br.com.doctordevs.connecthealth.model.Profissional;
 import br.com.doctordevs.connecthealth.repository.ProfissionalRepository;
@@ -58,13 +60,45 @@ public class ProfissionalService {
     }
 
     public boolean login(String email, String senha) {
-        List<Profissional> profissionais = profissionalRepository.findAll();
-        for (Profissional profissional : profissionais) {
-            if (profissional.getEmail().equals(email) && profissional.getSenha().equals(senha)) {
-                return true;
-            }
-
+        Profissional profissional = profissionalRepository.findByEmail(email);
+        if (profissional != null) {
+            PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+            return passwordEncoder.matches(senha, profissional.getSenha());
         }
         return false;
+    }
+
+    public boolean existsByEmail(String email) {
+        List<Profissional> profissionais = profissionalRepository.findAll();
+        for (Profissional profissional : profissionais) {
+            if (profissional.getEmail().equals(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existsByCpf(String cpf) {
+        List<Profissional> profissionais = profissionalRepository.findAll();
+        for (Profissional profissional : profissionais) {
+            if (profissional.getCpf().equals(cpf)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean existsByUrlCertificado(String urlCertificado) {
+        List<Profissional> profissionais = profissionalRepository.findAll();
+        for (Profissional profissional : profissionais) {
+            if (profissional.getUrlCertificado().equals(urlCertificado)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Profissional findByEmail(String email) {
+        return profissionalRepository.findByEmail(email);
     }
 }
