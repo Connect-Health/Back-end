@@ -3,13 +3,10 @@ package br.com.doctordevs.connecthealth.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.doctordevs.connecthealth.model.Profissional;
-import br.com.doctordevs.connecthealth.service.LoginResponse;
 import br.com.doctordevs.connecthealth.service.ProfissionalService;
 
 @RestController
@@ -75,18 +72,14 @@ public class ProfissionalController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<LoginResponse> login(@RequestBody Profissional profissional) {
+    private boolean login(@RequestBody Profissional profissional) {
         String email = profissional.getEmail();
         String senha = profissional.getSenha();
         Profissional profissionalEncontrado = profissionalService.findByEmail(email);
         if (profissionalEncontrado != null) {
-            boolean senhaCorreta = passwordEncoder.matches(senha, profissionalEncontrado.getSenha());
-            if (senhaCorreta) {
-                LoginResponse response = new LoginResponse(true, profissionalEncontrado);
-                return ResponseEntity.ok().body(response);
-            }
+            return passwordEncoder.matches(senha, profissionalEncontrado.getSenha());
         }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        return false;
     }
 
     @PostMapping("/loginGoogle")
