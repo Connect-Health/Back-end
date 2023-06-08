@@ -86,6 +86,19 @@ public class ProfissionalController {
         return false;
     }
 
+    @PutMapping("/{profissionalId}")
+private Profissional updateProfissionalEmail(@PathVariable("profissionalId") int profissionalId, @RequestBody Profissional profissional) {
+    Profissional profissionalExistente = profissionalService.getProfissionalId(profissionalId);
+    if (profissionalExistente == null) {
+        return null;
+    }
+    if (profissional.getEmail() != null) {
+        profissionalExistente.setEmail(profissional.getEmail());
+    }
+    profissionalService.save(profissionalExistente);
+    return profissionalExistente;
+}
+
     @PutMapping
     private Profissional update(@RequestBody Profissional profissional) {
         String senhaCriptografada = passwordEncoder.encode(profissional.getSenha());
