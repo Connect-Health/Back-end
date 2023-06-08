@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.doctordevs.connecthealth.model.Profissional;
+import br.com.doctordevs.connecthealth.service.LoginResponse;
 import br.com.doctordevs.connecthealth.service.ProfissionalService;
 
 @RestController
@@ -74,15 +75,19 @@ public class ProfissionalController {
     }
 
     @PostMapping("/login")
-private ResponseEntity<?> login(@RequestBody Profissional profissional) {
-    String email = profissional.getEmail();
-    String senha = profissional.getSenha();
-    Profissional profissionalEncontrado = profissionalService.findByEmail(email);
-    if (profissionalEncontrado != null && passwordEncoder.matches(senha, profissionalEncontrado.getSenha())) {
-        return ResponseEntity.ok().body(profissionalEncontrado);
+    public ResponseEntity<LoginResponse> login(@RequestBody Profissional profissional) {
+        String email = profissional.getEmail();
+        String senha = profissional.getSenha();
+        Profissional profissionalEncontrado = profissionalService.findByEmail(email);
+        if (profissionalEncontrado != null) {
+            boolean senhaCorreta = passwordEncoder.matches(senha, profissionalEncontrado.getSenha());
+            if (senhaCorreta) {
+                LoginResponse response = new LoginResponse(true, profissionalEncontrado);
+                return ResponseEntity.ok().body(response);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
     }
-    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
-}
 
     @PostMapping("/loginGoogle")
     private boolean loginGoogle(@RequestBody Profissional profissional) {
