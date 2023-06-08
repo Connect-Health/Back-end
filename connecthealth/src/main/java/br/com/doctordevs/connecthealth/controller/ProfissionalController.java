@@ -75,16 +75,21 @@ public class ProfissionalController {
     private boolean login(@RequestBody Profissional profissional) {
         String email = profissional.getEmail();
         String senha = profissional.getSenha();
-
         Profissional profissionalEncontrado = profissionalService.findByEmail(email);
-
         if (profissionalEncontrado != null) {
-            // Compara a senha fornecida com a senha armazenada (criptografada)
             return passwordEncoder.matches(senha, profissionalEncontrado.getSenha());
         }
-
         return false;
     }
+
+    @PostMapping("/loginGoogle")
+    private boolean loginGoogle(@RequestBody Profissional profissional) {
+    String email = profissional.getEmail();
+
+    Profissional profissionalEncontrado = profissionalService.findByEmail(email);
+
+    return profissionalEncontrado != null;
+}
 
     @PutMapping("/{profissionalId}")
 private Profissional updateProfissionalEmail(@PathVariable("profissionalId") int profissionalId, @RequestBody Profissional profissional) {
