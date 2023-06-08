@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.doctordevs.connecthealth.dto.PacienteLoginDTO;
 import br.com.doctordevs.connecthealth.model.Paciente;
 import br.com.doctordevs.connecthealth.service.PacienteService;
 
@@ -67,17 +69,17 @@ public class PacienteController {
     }
 
     @PostMapping("/login")
-    private boolean login(@RequestBody Paciente paciente) {
+    private PacienteLoginDTO login(@RequestBody Paciente paciente) {
         String email = paciente.getEmail();
         String senha = paciente.getSenha();
 
         Paciente pacienteEncontrado = pacienteService.findByEmail(email);
 
-        if (pacienteEncontrado != null) {
-            return encoder.matches(senha, pacienteEncontrado.getSenha());
+        if (pacienteEncontrado != null && encoder.matches(senha, pacienteEncontrado.getSenha())) {
+            return new PacienteLoginDTO(true, pacienteEncontrado);
         }
 
-        return false;
+        return new PacienteLoginDTO(false, null);
     }
 
     @PutMapping

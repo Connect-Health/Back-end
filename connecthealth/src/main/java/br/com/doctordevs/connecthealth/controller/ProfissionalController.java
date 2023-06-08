@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import br.com.doctordevs.connecthealth.dto.ProfissionalLoginDTO;
 import br.com.doctordevs.connecthealth.model.Profissional;
 import br.com.doctordevs.connecthealth.service.ProfissionalService;
 
@@ -72,37 +73,41 @@ public class ProfissionalController {
     }
 
     @PostMapping("/login")
-    private boolean login(@RequestBody Profissional profissional) {
+    private ProfissionalLoginDTO login(@RequestBody Profissional profissional) {
         String email = profissional.getEmail();
         String senha = profissional.getSenha();
+
         Profissional profissionalEncontrado = profissionalService.findByEmail(email);
-        if (profissionalEncontrado != null) {
-            return passwordEncoder.matches(senha, profissionalEncontrado.getSenha());
+
+        if (profissionalEncontrado != null && passwordEncoder.matches(senha, profissionalEncontrado.getSenha())) {
+            return new ProfissionalLoginDTO(true, profissionalEncontrado);
         }
-        return false;
+
+        return new ProfissionalLoginDTO(false, null);
     }
 
     @PostMapping("/loginGoogle")
     private boolean loginGoogle(@RequestBody Profissional profissional) {
-    String email = profissional.getEmail();
+        String email = profissional.getEmail();
 
-    Profissional profissionalEncontrado = profissionalService.findByEmail(email);
+        Profissional profissionalEncontrado = profissionalService.findByEmail(email);
 
-    return profissionalEncontrado != null;
-}
+        return profissionalEncontrado != null;
+    }
 
     @PutMapping("/{profissionalId}")
-private Profissional updateProfissionalEmail(@PathVariable("profissionalId") int profissionalId, @RequestBody Profissional profissional) {
-    Profissional profissionalExistente = profissionalService.getProfissionalId(profissionalId);
-    if (profissionalExistente == null) {
-        return null;
+    private Profissional updateProfissionalEmail(@PathVariable("profissionalId") int profissionalId,
+            @RequestBody Profissional profissional) {
+        Profissional profissionalExistente = profissionalService.getProfissionalId(profissionalId);
+        if (profissionalExistente == null) {
+            return null;
+        }
+        if (profissional.getEmail() != null) {
+            profissionalExistente.setEmail(profissional.getEmail());
+        }
+        profissionalService.save(profissionalExistente);
+        return profissionalExistente;
     }
-    if (profissional.getEmail() != null) {
-        profissionalExistente.setEmail(profissional.getEmail());
-    }
-    profissionalService.save(profissionalExistente);
-    return profissionalExistente;
-}
 
     @PutMapping
     private Profissional update(@RequestBody Profissional profissional) {
