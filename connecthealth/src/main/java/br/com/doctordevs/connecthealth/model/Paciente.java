@@ -39,7 +39,7 @@ public class Paciente {
     @JoinColumn(nullable = false, name = "endereco_id")
     private Endereco endereco;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)

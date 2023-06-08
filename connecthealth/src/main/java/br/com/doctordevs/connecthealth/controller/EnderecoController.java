@@ -26,13 +26,13 @@ public class EnderecoController {
             return enderecoService.getAllEndereco();
         }
     
-        @GetMapping("/endereco/{enderecoId}")
+        @GetMapping("/{enderecoId}")
         public Endereco getEndereco(@PathVariable("enderecoId") int enderecoId){
             return enderecoService.getEndereco(enderecoId);
     
         }
     
-        @DeleteMapping("/endereco/{enderecoId}")
+        @DeleteMapping("/{enderecoId}")
         private void deleteEndereco(@PathVariable("enderecoId") int enderecoId)
         {
             enderecoService.delete(enderecoId);

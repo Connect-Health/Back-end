@@ -68,7 +68,7 @@ public class ProfissionalController {
         String senhaCriptografada = passwordEncoder.encode(profissional.getSenha());
         profissional.setSenha(senhaCriptografada);
         profissionalService.save(profissional);
-        return "Profissional cadastrado com sucesso";
+        return "Profissional cadastrado com sucesso, o ID é: " + profissional.getprofissionalId();
     }
 
     @PostMapping("/login")
