@@ -3,6 +3,8 @@ package br.com.doctordevs.connecthealth.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
@@ -72,15 +74,15 @@ public class ProfissionalController {
     }
 
     @PostMapping("/login")
-    private boolean login(@RequestBody Profissional profissional) {
-        String email = profissional.getEmail();
-        String senha = profissional.getSenha();
-        Profissional profissionalEncontrado = profissionalService.findByEmail(email);
-        if (profissionalEncontrado != null) {
-            return passwordEncoder.matches(senha, profissionalEncontrado.getSenha());
-        }
-        return false;
+private ResponseEntity<?> login(@RequestBody Profissional profissional) {
+    String email = profissional.getEmail();
+    String senha = profissional.getSenha();
+    Profissional profissionalEncontrado = profissionalService.findByEmail(email);
+    if (profissionalEncontrado != null && passwordEncoder.matches(senha, profissionalEncontrado.getSenha())) {
+        return ResponseEntity.ok().body(profissionalEncontrado);
     }
+    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Credenciais inválidas");
+}
 
     @PostMapping("/loginGoogle")
     private boolean loginGoogle(@RequestBody Profissional profissional) {
