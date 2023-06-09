@@ -87,12 +87,16 @@ public class ProfissionalController {
     }
 
     @PostMapping("/loginGoogle")
-    private boolean loginGoogle(@RequestBody Profissional profissional) {
+    private ProfissionalLoginDTO loginGoogle(@RequestBody Profissional profissional) {
         String email = profissional.getEmail();
 
         Profissional profissionalEncontrado = profissionalService.findByEmail(email);
 
-        return profissionalEncontrado != null;
+        if (profissionalEncontrado != null) {
+        return new ProfissionalLoginDTO(true, profissionalEncontrado);
+        }
+
+        return new ProfissionalLoginDTO(false, null);
     }
 
     @PutMapping("/{profissionalId}")
