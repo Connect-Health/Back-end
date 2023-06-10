@@ -31,8 +31,7 @@ public class EnderecoService {
         enderecoRepository.save(endereco);
     }
 
-    public void update(Endereco endereco, int enderecoId)
-    {
+    public void update(Endereco endereco, int enderecoId) {
         enderecoRepository.save(endereco);
     }
 

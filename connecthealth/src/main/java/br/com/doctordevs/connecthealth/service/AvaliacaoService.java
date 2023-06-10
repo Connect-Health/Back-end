@@ -11,7 +11,6 @@ import br.com.doctordevs.connecthealth.repository.AvaliacaoRepository;
 
 @Service
 public class AvaliacaoService {
-    
 
     @Autowired
     AvaliacaoRepository avaliacaoRepository;
@@ -34,10 +33,8 @@ public class AvaliacaoService {
         avaliacaoRepository.save(avaliacao);
     }
 
-    public void update(Avaliacao avaliacao, int avaliacaoId)   
-    {  
-        avaliacaoRepository.save(avaliacao);  
-    }  
-    
-    
+    public void update(Avaliacao avaliacao, int avaliacaoId) {
+        avaliacaoRepository.save(avaliacao);
+    }
+
 }
