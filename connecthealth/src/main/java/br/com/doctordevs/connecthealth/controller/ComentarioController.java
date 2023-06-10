@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.doctordevs.connecthealth.model.Comentario;
+import br.com.doctordevs.connecthealth.model.Post;
 import br.com.doctordevs.connecthealth.service.ComentarioService;
 
 @RestController
@@ -44,13 +46,15 @@ public class ComentarioController {
     }
 
     @PostMapping
-    public void save(Comentario comentario) {
+    public int save(@RequestBody Comentario comentario) {
         comentarioService.save(comentario);
+        return comentario.getComentarioId();
     }
 
     @PutMapping
-    public void update(Comentario comentario) {
-        comentarioService.update(comentario);
+    public Comentario update(@RequestBody Comentario comentario) {
+        comentarioService.save(comentario);
+        return comentario;
     }
 
     @DeleteMapping("/{comentarioId}")
