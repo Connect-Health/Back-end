@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.doctordevs.connecthealth.model.Comentario;
-import br.com.doctordevs.connecthealth.model.Post;
 import br.com.doctordevs.connecthealth.service.ComentarioService;
 
 @RestController
