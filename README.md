@@ -4,9 +4,15 @@
 
 # Back-end - Connect Health
 
-[![Java](https://img.shields.io/badge/Java-17-blue)](https://www.java.com/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0.6-green)](https://spring.io/projects/spring-boot)
-[![MySQL](https://img.shields.io/badge/MySQL-8.0.23-blue)](https://www.mysql.com/)
+[![Java](https://img.shields.io/badge/Java-17-blue?logo=java)](https://www.java.com/)
+[![Maven](https://img.shields.io/badge/Maven-automated-green?logo=apache-maven)](https://maven.apache.org/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.0.6-brightgreen?logo=spring)](https://spring.io/projects/spring-boot)
+[![Spring Data JPA](https://img.shields.io/badge/Spring%20Data%20JPA-database-lightgrey?logo=spring)](https://spring.io/projects/spring-data-jpa)
+[![Spring Security](https://img.shields.io/badge/Spring%20Security-authentication%20%26%20authorization-yellow?logo=spring)](https://spring.io/projects/spring-security)
+[![MySQL](https://img.shields.io/badge/MySQL-8.0.23-blue?logo=mysql)](https://www.mysql.com/)
+[![Swagger](https://img.shields.io/badge/Swagger-API%20documentation-lightblue?logo=swagger)](https://swagger.io/)
+[![Insomnia](https://img.shields.io/badge/Insomnia-API%20client-purple?logo=insomnia)](https://insomnia.rest/)
+
 
 ## Repositório Relacionado
 
