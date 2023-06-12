@@ -82,6 +82,19 @@ public class PacienteController {
         return new PacienteLoginDTO(false, null);
     }
 
+    @PostMapping("/loginGoogle")
+    private PacienteLoginDTO loginGoogle(@RequestBody Paciente paciente) {
+        String email = paciente.getEmail();
+
+        Paciente pacienteEncontrado = pacienteService.findByEmail(email);
+
+        if (pacienteEncontrado != null) {
+        return new PacienteLoginDTO(true, pacienteEncontrado);
+        }
+
+        return new PacienteLoginDTO(false, null);
+    }
+
     @PutMapping
     private Paciente update(@RequestBody Paciente paciente) {
         String senhaCriptografada = encoder.encode(paciente.getSenha());
