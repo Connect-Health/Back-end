@@ -10,4 +10,6 @@ public interface ComentarioRepository extends JpaRepository<Comentario, Integer>
     List<Comentario> findByPacientePacienteId(int pacienteId);
 
     List<Comentario> findByPostPostId(int postId);
+
+    void deleteByPostPostId(int postId);
 }

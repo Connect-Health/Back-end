@@ -45,4 +45,14 @@ public class ComentarioService {
         comentarioRepository.save(comentario);
     }
 
+    public void removeComentarios(int postId) {
+        List<Comentario> comentarios = comentarioRepository.findByPostPostId(postId);
+        for (Comentario comentario : comentarios) {
+            if (comentario.getPost().getPostId() == postId) {
+                comentarioRepository.delete(comentario);
+            }
+
+        }
+    }
+
 }

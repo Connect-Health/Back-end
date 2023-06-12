@@ -1,4 +1,5 @@
 package br.com.doctordevs.connecthealth.controller;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,40 +20,45 @@ import br.com.doctordevs.connecthealth.service.AvaliacaoService;
 @RequestMapping("/avaliacao")
 @CrossOrigin(origins = "*")
 public class AvaliacaoController {
-    
+
     @Autowired
     private AvaliacaoService avaliacaoService;
 
     @GetMapping
-    public List<Avaliacao>getAllAvaliacao(){
+    public List<Avaliacao> getAllAvaliacao() {
         return avaliacaoService.getAllAvaliacao();
     }
 
     @GetMapping("/{avaliacaoId}")
-    public Avaliacao getAvaliacao(@PathVariable("avaliacaoId") int avaliacaoId){
+    public Avaliacao getAvaliacao(@PathVariable("avaliacaoId") int avaliacaoId) {
         return avaliacaoService.getAvaliacaoId(avaliacaoId);
-
     }
 
-    @DeleteMapping("/{avaliacaoId}")  
-    private void deletePaciente(@PathVariable("avaliacaoId") int avaliacaoId)   
-    {  
-        avaliacaoService.delete(avaliacaoId);  
+    @GetMapping("/paciente/{pacienteId}")
+    public List<Avaliacao> getAvaliacaoByPaciente(@PathVariable("pacienteId") int pacienteId) {
+        return avaliacaoService.getAvaliacaoByPaciente(pacienteId);
+    }
+
+    @GetMapping("/profissional/{profissionalId}")
+    public List<Avaliacao> getAvaliacaoByProfissional(@PathVariable("profissionalId") int profissionalId) {
+        return avaliacaoService.getAvaliacaoByProfissional(profissionalId);
+    }
+
+    @DeleteMapping("/{avaliacaoId}")
+    private void deletePaciente(@PathVariable("avaliacaoId") int avaliacaoId) {
+        avaliacaoService.delete(avaliacaoId);
     }
 
     @PostMapping
-    private int saveAvaliacao(@RequestBody Avaliacao avaliacao)   
-    {  
-        avaliacaoService.save(avaliacao);  
-        return avaliacao.getAvaliacaoId();  
-    }  
+    private int saveAvaliacao(@RequestBody Avaliacao avaliacao) {
+        avaliacaoService.save(avaliacao);
+        return avaliacao.getAvaliacaoId();
+    }
 
     @PutMapping
-    private Avaliacao update(@RequestBody Avaliacao avaliacao)   
-    {  
-        avaliacaoService.save(avaliacao);  
-        return avaliacao;  
+    private Avaliacao update(@RequestBody Avaliacao avaliacao) {
+        avaliacaoService.save(avaliacao);
+        return avaliacao;
     }
 
 }
-

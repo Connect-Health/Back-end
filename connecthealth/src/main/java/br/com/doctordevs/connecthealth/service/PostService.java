@@ -7,12 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import br.com.doctordevs.connecthealth.model.Post;
 import br.com.doctordevs.connecthealth.repository.PostRepository;
+import jakarta.transaction.Transactional;
 
 @Service
 public class PostService {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private ComentarioService comentarioService;
 
     public List<Post> getAllPost() {
         List<Post> post = new ArrayList<Post>();
@@ -25,7 +29,11 @@ public class PostService {
     }
 
     public void delete(int postId) {
-        postRepository.deleteById(postId);
+        Post post = postRepository.findById(postId).get();
+        if (post != null) {
+            comentarioService.removeComentarios(postId);
+            postRepository.delete(post);
+        }
     }
 
     public void save(Post post) {
