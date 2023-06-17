@@ -7,7 +7,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.doctordevs.connecthealth.dto.ProfissionalLoginDTO;
+import br.com.doctordevs.connecthealth.model.Endereco;
 import br.com.doctordevs.connecthealth.model.Profissional;
+import br.com.doctordevs.connecthealth.service.EnderecoService;
 import br.com.doctordevs.connecthealth.service.ProfissionalService;
 
 @RestController
@@ -15,14 +17,14 @@ import br.com.doctordevs.connecthealth.service.ProfissionalService;
 @CrossOrigin(origins = "*")
 public class ProfissionalController {
 
-    private final ProfissionalService profissionalService;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private ProfissionalService profissionalService;
 
     @Autowired
-    public ProfissionalController(ProfissionalService profissionalService, PasswordEncoder passwordEncoder) {
-        this.profissionalService = profissionalService;
-        this.passwordEncoder = passwordEncoder;
-    }
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private EnderecoService enderecoService;
 
     @GetMapping
     public List<Profissional> getAllPaciente() {
@@ -68,6 +70,11 @@ public class ProfissionalController {
 
         String senhaCriptografada = passwordEncoder.encode(profissional.getSenha());
         profissional.setSenha(senhaCriptografada);
+
+        Endereco enderecoAtual = profissional.getEndereco();
+        int enderecoId = enderecoService.save(enderecoAtual);
+        profissional.getEndereco().setEnderecoId(enderecoId);
+
         profissionalService.save(profissional);
         return "Profissional cadastrado com sucesso, o ID é: " + profissional.getprofissionalId();
     }
