@@ -12,6 +12,6 @@ public class ChatController {
     
     @GetMapping
     public String getChat() {
-        return "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";
+        return "sk-KqE4a2i5neuqldm8t0QjT3BlbkFJOtSAhXU8NNB1yC7JJ9lia";
     }
 }
