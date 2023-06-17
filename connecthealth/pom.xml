@@ -52,6 +52,14 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
+
+		<!-- Dependência do Hibernate Validator -->
+		<dependency>
+			<groupId>org.hibernate.validator</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>7.0.2.Final</version>
+		</dependency>
+
 		
 		<!-- Dependência para testes -->
 		<dependency>
