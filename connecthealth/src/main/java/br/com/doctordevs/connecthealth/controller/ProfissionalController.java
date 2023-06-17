@@ -93,7 +93,7 @@ public class ProfissionalController {
         Profissional profissionalEncontrado = profissionalService.findByEmail(email);
 
         if (profissionalEncontrado != null) {
-        return new ProfissionalLoginDTO(true, profissionalEncontrado);
+            return new ProfissionalLoginDTO(true, profissionalEncontrado);
         }
 
         return new ProfissionalLoginDTO(false, null);

@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.doctordevs.connecthealth.dto.PacienteLoginDTO;
+import br.com.doctordevs.connecthealth.model.Endereco;
 import br.com.doctordevs.connecthealth.model.Paciente;
+import br.com.doctordevs.connecthealth.service.EnderecoService;
 import br.com.doctordevs.connecthealth.service.PacienteService;
 
 @RestController
@@ -28,6 +30,9 @@ public class PacienteController {
 
     @Autowired
     private PasswordEncoder encoder;
+
+    @Autowired
+    private EnderecoService enderecoService;
 
     @GetMapping
     public List<Paciente> getAllPaciente() {
@@ -64,6 +69,11 @@ public class PacienteController {
 
         String senhaCriptografada = encoder.encode(paciente.getSenha());
         paciente.setSenha(senhaCriptografada);
+
+        Endereco enderecoAtual = paciente.getEndereco();
+        int enderecoId = enderecoService.save(enderecoAtual);
+        paciente.getEndereco().setEnderecoId(enderecoId);
+
         pacienteService.save(paciente);
         return "Paciente cadastrado com sucesso, O ID do paciente é: " + paciente.getPacienteId();
     }
@@ -89,7 +99,7 @@ public class PacienteController {
         Paciente pacienteEncontrado = pacienteService.findByEmail(email);
 
         if (pacienteEncontrado != null) {
-        return new PacienteLoginDTO(true, pacienteEncontrado);
+            return new PacienteLoginDTO(true, pacienteEncontrado);
         }
 
         return new PacienteLoginDTO(false, null);

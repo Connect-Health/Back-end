@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.doctordevs.connecthealth.model.Especialidade;
 import br.com.doctordevs.connecthealth.service.EspecialidadeService;
+import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
 @RestController
 @RequestMapping("/especialidade")
@@ -49,13 +50,13 @@ public class EspecialidadeController {
     }
 
     @PostMapping
-    private int saveEspecialidade(Especialidade especialidade) {
+    private int saveEspecialidade(@RequestBody Especialidade especialidade) {
         especialidadeService.save(especialidade);
         return especialidade.getEspecialidadeId();
     }
 
     @PutMapping
-    private Especialidade update(Especialidade especialidade) {
+    private Especialidade update(@RequestBody Especialidade especialidade) {
         especialidadeService.save(especialidade);
         return especialidade;
     }

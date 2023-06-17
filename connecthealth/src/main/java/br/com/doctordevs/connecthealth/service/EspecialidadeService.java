@@ -55,7 +55,7 @@ public class EspecialidadeService {
         especialidadeRepository.save(especialidade);
     }
 
-    public void update(Especialidade especialidade, int especialidadeId) {
+    public void update(Especialidade especialidade) {
         especialidadeRepository.save(especialidade);
     }
 

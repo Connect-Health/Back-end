@@ -27,8 +27,9 @@ public class EnderecoService {
         enderecoRepository.deleteById(enderecoId);
     }
 
-    public void save(Endereco endereco) {
+    public int save(Endereco endereco) {
         enderecoRepository.save(endereco);
+        return endereco.getEnderecoId();
     }
 
     public void update(Endereco endereco, int enderecoId) {
