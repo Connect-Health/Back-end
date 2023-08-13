@@ -20,7 +20,7 @@
 
 ## Sobre o Projeto
 
-O Connect Health é um projeto desenvolvido para a disciplina de Projeto Integrador 2 do curso de Análise e Desenvolvimento de Sistemas da Universidade Tecnológica Federal do Paraná (UTFPR) - Câmpus Campo Mourão.
+A Connect Health é uma plataforma online que oferece serviços de consultas e informações relacionadas à área da psicologia e nutrição. Com o objetivo de proporcionar acesso conveniente e seguro aos profissionais de saúde, a Connect Health permite que os usuários tenham consultas remotas com especialistas qualificados, garantindo conveniência e conforto em um ambiente virtual.
 
 ## Tecnologias Utilizadas
 
