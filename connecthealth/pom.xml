@@ -24,10 +24,11 @@
 		</dependency>
 		
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.33</version>
-		</dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+    	</dependency>
+
 		<!-- Dependências para aplicativo web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
