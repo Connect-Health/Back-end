@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.doctordevs.connecthealth.dto.PacienteLoginDTO;
+import br.com.doctordevs.connecthealth.handler.BusinessException;
 import br.com.doctordevs.connecthealth.model.Endereco;
 import br.com.doctordevs.connecthealth.model.Paciente;
 import br.com.doctordevs.connecthealth.service.EnderecoService;
@@ -53,15 +54,15 @@ public class PacienteController {
     @PostMapping
     private String savePaciente(@RequestBody Paciente paciente) {
         if (pacienteService.existsByEmail(paciente.getEmail())) {
-            throw new Error("Email já cadastrado");
+            throw new BusinessException("Email já cadastrado");
         }
 
         if (pacienteService.existsByCpf(paciente.getCpf())) {
-            throw new Error("CPF já cadastrado");
+            throw new BusinessException("CPF já cadastrado");
         }
 
         if (pacienteService.existsByTelefone(paciente.getTelefone())) {
-            throw new Error("Telefone já cadastrado");
+            throw new BusinessException("Telefone já cadastrado");
         }
 
         String senhaCriptografada = encoder.encode(paciente.getSenha());

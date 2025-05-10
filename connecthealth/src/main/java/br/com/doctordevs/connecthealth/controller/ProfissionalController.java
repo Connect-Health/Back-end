@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import br.com.doctordevs.connecthealth.dto.ProfissionalLoginDTO;
+import br.com.doctordevs.connecthealth.handler.BusinessException;
 import br.com.doctordevs.connecthealth.model.Endereco;
 import br.com.doctordevs.connecthealth.model.Profissional;
 import br.com.doctordevs.connecthealth.service.EnderecoService;
@@ -54,15 +55,15 @@ public class ProfissionalController {
     @PostMapping
     private String saveProfissional(@RequestBody Profissional profissional) {
         if (profissionalService.existsByEmail(profissional.getEmail())) {
-            throw new Error("Email já cadastrado");
+            throw new BusinessException("Email já cadastrado");
         }
 
         if (profissionalService.existsByCpf(profissional.getCpf())) {
-           throw new Error("CPF já cadastrado");
+           throw new BusinessException("CPF já cadastrado");
         }
 
         if (profissionalService.existsByUrlCertificado(profissional.getUrlCertificado())) {
-            throw new Error("Certificado já cadastrado");
+            throw new BusinessException("Certificado já cadastrado");
         }
 
         String senhaCriptografada = passwordEncoder.encode(profissional.getSenha());
