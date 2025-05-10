@@ -54,18 +54,15 @@ public class ProfissionalController {
     @PostMapping
     private String saveProfissional(@RequestBody Profissional profissional) {
         if (profissionalService.existsByEmail(profissional.getEmail())) {
-            Error error = new Error("Email já cadastrado");
-            return error.getMessage();
+            throw new Error("Email já cadastrado");
         }
 
         if (profissionalService.existsByCpf(profissional.getCpf())) {
-            Error error = new Error("CPF já cadastrado");
-            return error.getMessage();
+           throw new Error("CPF já cadastrado");
         }
 
         if (profissionalService.existsByUrlCertificado(profissional.getUrlCertificado())) {
-            Error error = new Error("URL do certificado já cadastrado");
-            return error.getMessage();
+            throw new Error("Certificado já cadastrado");
         }
 
         String senhaCriptografada = passwordEncoder.encode(profissional.getSenha());

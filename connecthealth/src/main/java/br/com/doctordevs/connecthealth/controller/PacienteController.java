@@ -53,18 +53,15 @@ public class PacienteController {
     @PostMapping
     private String savePaciente(@RequestBody Paciente paciente) {
         if (pacienteService.existsByEmail(paciente.getEmail())) {
-            Error error = new Error("Email já cadastrado");
-            return error.getMessage();
+            throw new Error("Email já cadastrado");
         }
 
         if (pacienteService.existsByCpf(paciente.getCpf())) {
-            Error error = new Error("CPF já cadastrado");
-            return error.getMessage();
+            throw new Error("CPF já cadastrado");
         }
 
         if (pacienteService.existsByTelefone(paciente.getTelefone())) {
-            Error error = new Error("Telefone já cadastrado");
-            return error.getMessage();
+            throw new Error("Telefone já cadastrado");
         }
 
         String senhaCriptografada = encoder.encode(paciente.getSenha());
